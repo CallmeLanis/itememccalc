@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Custom Guns</title>
+    <link rel="stylesheet" href="src/main/webapp/css/style.css">
+    <script>
+    (function(){
+        var t = localStorage.getItem('emc-theme');
+        if (t === 'anime') t = 'dark';
+        document.documentElement.setAttribute('data-theme', t || 'dark');
+    })();
+    </script>
+    <script src="src/main/webapp/css/theme.js"></script>
+    <script src="js/db.js" defer></script>
+    <script src="js/fullgun.js" defer></script>
+</head>
+<body>
+<nav class="sidebar">
+    <div class="sidebar-logo">Menu</div>
+    <ul class="nav-list">
+        <li><a href="index.html"><i class="icon">🏠</i> <span class="nav-text">Launchpad</span></a></li>
+        <li><a href="home.html"><i class="icon">🏠</i> <span class="nav-text">Home</span></a></li>
+        <li><a href="material.html"><i class="icon">🍱</i> <span class="nav-text">Materials</span></a></li>
+        <li><a href="saved.html"><i class="icon">📥</i> <span class="nav-text">Saved Items</span></a></li>
+        <li><a href="gunorigin.html"><i class="icon">📦</i> <span class="nav-text">Base Guns</span></a></li>
+        <li><a href="fullgun.html"><i class="icon">🛠️</i> <span class="nav-text">Custom Guns</span></a></li>
+        <li><a href="overview.html"><i class="icon">📊</i> <span class="nav-text">Overview</span></a></li>
+        <li><a href="quickload.html"><i class="icon">⇌</i> <span class="nav-text">Import / Export</span></a></li>
+        <li><a href="cleandb.html"><i class="icon">🧹</i> <span class="nav-text">Clean Table</span></a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <div class="header-top">
+        <h1 class="header-title">Custom Guns</h1>
+        
+        <button class="theme-toggle" id="themeToggle" onclick="cycleTheme()" title="Toggle Theme">
+            <span class="theme-toggle-icon" id="themeIcon">🌑</span>
+            <span class="theme-toggle-label" id="themeLabel">Dark</span>
+        </button>
+    </div>
+    
+    <div class="flex-layout">
+        <div class="card-panel">
+            <h2>Assemble Full Weapon</h2>
+            <form id="cg-form">
+                <div class="input-group">
+                    <span class="input-label">Gun Name</span>
+                    <input type="text" id="cg-name" class="input-field" required />
+                </div>
+                <h3>Base Gun Selection</h3>
+                <select id="bg-select" class="input-field" style="margin-bottom:20px; width:100%;"></select>
+                <h3>Attachments</h3>
+                <div id="att-selects" style="margin-bottom:20px;"></div>
+                <button type="submit" class="btn-primary">Assemble Gun</button>
+            </form>
+        </div>
+        <div class="card-panel">
+            <h2>Custom Gun Configurations</h2>
+            <table class="styled-table">
+                <thead><tr><th>Name</th><th>Total EMC</th><th>Action</th></tr></thead>
+                <tbody id="cg-tbody"></tbody>
+            </table>
+        </div>
+    </div>
+    
+</div>
+</body>
+</html>

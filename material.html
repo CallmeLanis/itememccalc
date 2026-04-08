@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mats Compendium</title>
+    <link rel="stylesheet" href="src/main/webapp/css/style.css">
+    <script>
+    (function(){
+        var t = localStorage.getItem('emc-theme');
+        if (t === 'anime') t = 'dark';
+        document.documentElement.setAttribute('data-theme', t || 'dark');
+    })();
+    </script>
+    <script src="src/main/webapp/css/theme.js"></script>
+    <script src="js/db.js" defer></script>
+    <script src="js/material.js" defer></script>
+</head>
+<body>
+<nav class="sidebar">
+    <div class="sidebar-logo">Menu</div>
+    <ul class="nav-list">
+        <li><a href="index.html"><i class="icon">🏠</i> <span class="nav-text">Launchpad</span></a></li>
+        <li><a href="home.html"><i class="icon">🏠</i> <span class="nav-text">Home</span></a></li>
+        <li><a href="material.html"><i class="icon">🍱</i> <span class="nav-text">Materials</span></a></li>
+        <li><a href="saved.html"><i class="icon">📥</i> <span class="nav-text">Saved Items</span></a></li>
+        <li><a href="gunorigin.html"><i class="icon">📦</i> <span class="nav-text">Base Guns</span></a></li>
+        <li><a href="fullgun.html"><i class="icon">🛠️</i> <span class="nav-text">Custom Guns</span></a></li>
+        <li><a href="overview.html"><i class="icon">📊</i> <span class="nav-text">Overview</span></a></li>
+        <li><a href="quickload.html"><i class="icon">⇌</i> <span class="nav-text">Import / Export</span></a></li>
+        <li><a href="cleandb.html"><i class="icon">🧹</i> <span class="nav-text">Clean Table</span></a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <div class="header-top">
+        <h1 class="header-title">Mats Compendium</h1>
+        
+        <button class="theme-toggle" id="themeToggle" onclick="cycleTheme()" title="Toggle Theme">
+            <span class="theme-toggle-icon" id="themeIcon">🌑</span>
+            <span class="theme-toggle-label" id="themeLabel">Dark</span>
+        </button>
+    </div>
+    
+    <div class="card-panel">
+        <h2 id="form-title">Add New Record</h2>
+        <form id="mat-form">
+            <div class="form-row">
+                <div class="input-group">
+                    <span class="input-label">Name</span>
+                    <input type="text" id="m-name" class="input-field" placeholder="E.g., Iron Ingot" required />
+                </div>
+                <div class="input-group">
+                    <span class="input-label">EMC</span>
+                    <input type="number" id="m-emc" class="input-field" required />
+                </div>
+                <button type="submit" id="submit-btn" class="btn-primary" style="color:white;">Inscribe Record</button>
+            </div>
+        </form>
+    </div>
+    <div class="card-panel">
+        <table class="styled-table mat-table">
+            <thead><tr><th width="10%">No.</th><th width="40%">Artifact Name</th><th width="25%">Value (EMC)</th><th width="25%">Directives</th></tr></thead>
+            <tbody id="mat-tbody"></tbody>
+        </table>
+    </div>
+    
+</div>
+</body>
+</html>
